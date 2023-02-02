@@ -1,20 +1,21 @@
 function solution(s, n) {
-    const Upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
-    const Lower =  'abcdefghijklmnopqrstuvwxyz'.split('')
-    let num = 0;
-    let New = []
-    
-    let Str = s.split('');
-    Str.map(v => {
-        if (v == ' ') New.push(' ')
-        else if (Lower.includes(v)) {
-            num = Lower.indexOf(v) + n 
-            num > 25 ? New.push(Lower[num - 26]) : New.push(Lower[num])
-        } else if (Upper.includes(v)) {
-            num = Upper.indexOf(v) + n 
-            num > 25 ? New.push(Upper[num - 26]) : New.push(Upper[num])
-        } 
-    } )
-    
-    return New.join('');
+    var str = s.split("")
+    var answer = []
+    for (let i=0;i<str.length;i++){
+        if (str[i] == ' ') answer.push(' ') ;
+        else { 
+        
+        let el = s.charCodeAt(i)
+        if(el >= 65 && el <= 90){
+            if(el+n >= 91){
+                answer.push(String.fromCharCode(el+n-26))
+            }else{
+                answer.push(String.fromCharCode(el+n))
+            }
+        }else if(el >= 97 && el <= 122){
+            el + n > 122 ? answer.push(String.fromCharCode(el+n-26)) : answer.push(String.fromCharCode(el + n))
+           }}
+        
+    }
+    return answer.join("");
 }
