@@ -1,11 +1,10 @@
-SELECT CART_ID
-FROM (
-    SELECT CART_ID, NAME
-    FROM CART_PRODUCTS
-    WHERE
-        NAME IN ('Milk', 'Yogurt')
-    GROUP BY CART_ID, NAME
-) A
-GROUP BY CART_ID
-HAVING COUNT(*) >= 2
-ORDER BY CART_ID;
+SELECT cart_id
+FROM   cart_products
+WHERE  name = 'yogurt' AND 
+       cart_id IN (SELECT cart_id
+                  FROM   cart_products
+                  WHERE name = 'milk')
+GROUP
+BY     cart_id
+ORDER
+BY     cart_id
