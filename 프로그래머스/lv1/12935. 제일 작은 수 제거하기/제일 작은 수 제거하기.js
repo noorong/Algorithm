@@ -1,5 +1,5 @@
 function solution(arr) {
-    var answer = arr.indexOf(Math.min(...arr));
-    let a = arr.splice(answer,1)
+    var min = arr.indexOf(Math.min(...arr));
+    let answer = arr.splice(min,1)
     return arr.length > 1 ? arr : [-1];
 }
