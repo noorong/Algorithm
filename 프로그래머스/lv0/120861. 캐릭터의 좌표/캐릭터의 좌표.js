@@ -1,20 +1,17 @@
 function solution(keyinput, board) {
-    let resultX = 0;
-    let resultY = 0;
-    
-    let hor = keyinput.filter(v => v === "left" || v === "right");
-    let ver = keyinput.filter(v => v === "up" || v === "down");
-    
-    for(let v of hor) {
-        v === "right" ? 
-            resultX < Math.floor(board[0]/2) && resultX++ : -resultX < Math.floor(board[0]/2) && resultX--;
+    var now = [0,0];
+    board = [(board[0]-1)/2, (board[1]-1)/2]
+    for(let i=0;i<keyinput.length;i++){
+        if(keyinput[i] === "left" && (now[0]) > -board[0]) 
+            now[0] -= 1
+        if(keyinput[i] === "right" && now[0] < board[0])
+            now[0] += 1
+        if(keyinput[i] === "up" && now[1] < board[1])
+            now[1] += 1
+        if(keyinput[i] === "down" && now[1] > -board[1])
+            now[1] -= 1
+        console.log(now)
     }
     
-    for(let v of ver) {
-        v === "up" ? 
-        resultY < Math.floor(board[1]/2) && resultY++ : -resultY < Math.floor(board[1]/2) && resultY--;
-    }
-    
-    
-    return [resultX,resultY];
+    return now;
 }
