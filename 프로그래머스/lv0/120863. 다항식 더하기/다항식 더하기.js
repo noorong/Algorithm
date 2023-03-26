@@ -8,9 +8,10 @@ function solution(polynomial) {
         else if (v.includes('x')) {
             v === 'x' ? tmp2++ :
             tmp2 += parseInt(v.replace('x','.0'))
-            console.log(tmp2)
+            // console.log(tmp2)
         }
     })
+    //return을 위한 코드 ;
     let result = ''
     if (tmp2 === 1) {
         result += "x"
